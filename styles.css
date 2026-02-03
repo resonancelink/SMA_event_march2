@@ -1,0 +1,625 @@
+:root {
+    --primary-yellow: #FBD768;
+    /* Mimosa yellow */
+    --secondary-yellow: #FFE896;
+    --primary-green: #8FAF92;
+    /* Sage green/leaf */
+    --secondary-green: #B6D7A8;
+    --text-color: #5A4D41;
+    /* Warm brown-grey */
+    --bg-color: #FDFCF8;
+    /* Creamy white */
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --accent-gold: #D4AF37;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Shippori Mincho', serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.8;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background elements */
+.mimosa-bg-1,
+.mimosa-bg-2 {
+    position: fixed;
+    z-index: -1;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.6;
+}
+
+.mimosa-bg-1 {
+    top: -50px;
+    left: -50px;
+    width: 400px;
+    height: 400px;
+    background-image: url('public/images/mimoza_pic.png');
+    /* Assuming top-left placement fits */
+    transform: rotate(180deg);
+}
+
+.mimosa-bg-2 {
+    bottom: -50px;
+    right: -50px;
+    width: 500px;
+    height: 500px;
+    background-image: url('public/images/mimoza_pic.png');
+}
+
+/* Hero Section */
+.hero {
+    min-height: 90vh;
+    /* Changed from height to min-height for better mobile handling */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    /* More transparent background to show mimosa images */
+    background:
+        radial-gradient(circle at 70% 30%, rgba(251, 215, 104, 0.2), transparent 60%),
+        radial-gradient(circle at 10% 80%, rgba(143, 175, 146, 0.2), transparent 50%);
+}
+
+.hero::before {
+    content: none;
+}
+
+.hero-content {
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.75);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    padding: 3.5rem;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 40px rgba(247, 219, 105, 0.4);
+    position: relative;
+    max-width: 95%;
+}
+
+.hero-content::after {
+    display: none;
+}
+
+.hero-title {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    line-height: 1.3;
+    text-shadow: none;
+}
+
+.hero-title .date {
+    display: inline-block;
+    font-size: 2rem;
+    color: var(--primary-green);
+    background: none;
+    -webkit-text-fill-color: initial;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 0 #fff;
+}
+
+.hero-title .main-title {
+    display: block;
+    font-size: 3.5rem;
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: var(--text-color);
+    margin: 0.5rem 0;
+    text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.8), 0 0 20px rgba(251, 215, 104, 0.3);
+    letter-spacing: -0.05em;
+}
+
+.hero-title .location {
+    font-size: 1.8rem;
+    color: #8c7b6c;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    display: inline-block;
+    margin-top: 0.5rem;
+    background: linear-gradient(transparent 60%, var(--secondary-yellow) 60%);
+    padding: 0 10px;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: #5A4D41;
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 700;
+    line-height: 1.8;
+}
+
+.hero-subtitle .line {
+    display: inline;
+    background-image: none;
+}
+
+/* Sparkles */
+.sparkles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.sparkle {
+    position: absolute;
+    background: radial-gradient(circle, #fff 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    opacity: 0;
+    animation: floatSparkle 4s ease-in-out infinite;
+}
+
+.s1 {
+    width: 60px;
+    height: 60px;
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.s2 {
+    width: 40px;
+    height: 40px;
+    top: 60%;
+    left: 80%;
+    animation-delay: 1s;
+    background: radial-gradient(circle, rgba(251, 215, 104, 0.8) 0%, transparent 70%);
+}
+
+.s3 {
+    width: 80px;
+    height: 80px;
+    top: 40%;
+    left: 10%;
+    animation-delay: 2s;
+}
+
+.s4 {
+    width: 50px;
+    height: 50px;
+    top: 70%;
+    left: 30%;
+    animation-delay: 1.5s;
+    background: radial-gradient(circle, rgba(143, 175, 146, 0.6) 0%, transparent 70%);
+}
+
+.s5 {
+    width: 30px;
+    height: 30px;
+    top: 15%;
+    left: 85%;
+    animation-delay: 0.5s;
+}
+
+/* .s6 { ... } - Keeping sparkles as they are widely dispersed */
+.s6 {
+    width: 70px;
+    height: 70px;
+    top: 80%;
+    left: 60%;
+    animation-delay: 2.5s;
+    background: radial-gradient(circle, rgba(255, 232, 150, 0.7) 0%, transparent 70%);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-1 {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    animation-delay: 0.2s;
+    display: inline-block;
+}
+
+.fade-in-2 {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    animation-delay: 0.5s;
+    display: inline-block;
+}
+
+.fade-in-3 {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    animation-delay: 0.8s;
+    display: inline-block;
+}
+
+.fade-in-4 {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    animation-delay: 1.1s;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+@keyframes floatSparkle {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: translateY(-20px) scale(1);
+    }
+
+    100% {
+        transform: translateY(-40px) scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes twinkle {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-100px);
+    }
+}
+
+/* Mobile Responsive adjustment for Hero */
+@media (max-width: 768px) {
+    .hero-title .date {
+        font-size: 1.4rem;
+    }
+
+    .hero-title .main-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-title .location {
+        font-size: 1.1rem;
+    }
+
+    .hero-content {
+        padding: 3rem 1.5rem;
+        width: 90%;
+    }
+}
+
+/* Container */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+}
+
+section {
+    margin-bottom: 6rem;
+}
+
+h2 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: var(--text-color);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-yellow), var(--primary-green));
+    margin: 1rem auto 0;
+    border-radius: 2px;
+}
+
+/* Intro Section */
+.intro p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.intro strong {
+    color: var(--primary-green);
+    font-weight: 600;
+    background: linear-gradient(transparent 70%, var(--secondary-yellow) 70%);
+}
+
+.intro a {
+    color: var(--primary-green);
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid var(--secondary-yellow);
+    transition: all 0.3s ease;
+}
+
+.intro a:hover {
+    color: var(--accent-gold);
+    background-color: rgba(251, 215, 104, 0.1);
+}
+
+.intro-image {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.intro-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 4px solid #fff;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+/* Details Section */
+.detail-card {
+    background: var(--card-bg);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.detail-card h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-green);
+}
+
+dl {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+    align-items: baseline;
+}
+
+dt {
+    font-weight: bold;
+    color: var(--accent-gold);
+    text-align: right;
+    font-size: 1.1rem;
+}
+
+dd {
+    font-size: 1.1rem;
+}
+
+.note {
+    font-size: 0.9rem;
+    color: #888;
+    display: block;
+    margin-top: 0.2rem;
+}
+
+.highlight {
+    color: #E67E22;
+    font-weight: bold;
+    margin-left: 0.5rem;
+}
+
+/* Counselors Grid */
+.counselor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2.5rem;
+}
+
+.counselor-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.counselor-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(247, 219, 105, 0.3);
+}
+
+.img-wrapper {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    overflow: hidden;
+    border: 3px solid var(--secondary-yellow);
+    position: relative;
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.counselor-card:hover .img-wrapper img {
+    transform: scale(1.1);
+}
+
+.counselor-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+.btn-reserv {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-green), #739E79);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    margin-top: auto;
+}
+
+.btn-reserv:hover {
+    background: linear-gradient(135deg, #739E79, var(--primary-green));
+    box-shadow: 0 5px 15px rgba(115, 158, 121, 0.4);
+    transform: translateY(-2px);
+}
+
+.section-desc {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Schedule */
+.schedule-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto 1rem;
+}
+
+.schedule-item {
+    background: #fff;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    border: 2px solid var(--secondary-yellow);
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.schedule-item span {
+    color: var(--primary-green);
+    margin-right: 0.5rem;
+    font-weight: bold;
+}
+
+.schedule-note {
+    text-align: center;
+    color: #888;
+    margin-bottom: 2rem;
+}
+
+.schedule-instruction {
+    text-align: center;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.schedule-instruction .highlight {
+    color: #E67E22;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Contact */
+.contact-info {
+    text-align: center;
+}
+
+.contact-info a {
+    color: var(--primary-green);
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px dashed var(--secondary-green);
+}
+
+.contact-info a:hover {
+    color: var(--accent-gold);
+    border-bottom-style: solid;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 3rem;
+    background: var(--primary-green);
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    dl {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    dt {
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .mimosa-bg-1,
+    .mimosa-bg-2 {
+        opacity: 0.3;
+        width: 250px;
+        height: 250px;
+    }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
