@@ -609,6 +609,10 @@ footer {
         width: 250px;
         height: 250px;
     }
+
+    .intro-image {
+        margin-top: 2rem;
+    }
 }
 
 /* Animation */
